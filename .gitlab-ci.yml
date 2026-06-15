@@ -16,6 +16,6 @@ deploy:
     variables:
         GIT_STRATEGY: none
     script:
-        - java -jar /target/shoe-ShoppingCart-0.0.1-SNAPSHOT.jar
+        - java -jar target/shoe-ShoppingCart-0.0.1-SNAPSHOT.jar
     tags:
         - devopslab
