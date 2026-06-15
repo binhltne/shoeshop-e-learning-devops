@@ -19,13 +19,10 @@ build:
 
 deploy:
   stage: deploy
-  variables:
-    GIT_STRATEGY: none
   script:
-  - sudo cp target/$projectname-$version.jar $projectpath
-  - sudo chown -R $projectuser: $projectpath
-  - sudo pkill -f "$projectname" || true
-  - cd $projectpath
-  - sudo -u $projectuser nohup java -jar $projectname-$version.jar > app.log 2>&1 &
+    - sudo cp target/$projectname-$version.jar $projectpath
+    - sudo chown -R $projectuser: $projectpath
+    - sudo pkill -f "$projectname" || true
+    - sudo -u $projectuser bash -c "cd $projectpath && nohup java -jar $projectname-$version.jar >/tmp/app.log 2>&1 &"
   tags:
     - devopslab
