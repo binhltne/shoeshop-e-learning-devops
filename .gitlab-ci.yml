@@ -8,3 +8,10 @@ build:
         - mvn install -DskipTest=true
     tags:
         - devopslab
+
+deploy:
+    stage: deploy
+    script:
+        - java -jar /target/shoe-ShoppingCart-0.0.1-SNAPSHOT.jar
+    tags:
+        - devopslab
