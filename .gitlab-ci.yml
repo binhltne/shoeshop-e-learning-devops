@@ -1,31 +1,30 @@
 variables:
-    projectname: shoe-ShoppingCart
-    version: 0.0.1-SNAPSHOT
-    projectuser: shoeshop
-    projectpath: /datas/shoeshop
-
+  projectname: shoe-ShoppingCart
+  version: 0.0.1-SNAPSHOT
+  projectuser: shoeshop
+  projectpath: /datas/shoeshop
 
 stages:
-    - build
-    - deploy
-    - checking
+  - build
+  - deploy
+
 build:
-    stage: build
-    variables:
-        GIT_STRATEGY: clone
-    script:
-        - mvn install -DskipTests=true
-    tags:
-        - devopslab
+  stage: build
+  variables:
+    GIT_STRATEGY: clone
+  script:
+    - mvn install -DskipTests
+  tags:
+    - devopslab
 
 deploy:
-    stage: deploy
-    variables:
-        GIT_STRATEGY: none
-    script:
-        - sudo cp target/$projectname-$version.jar $projectpath
-        - sudo chown -R $projectuser: $projectpath
-        - sudo pkill -f "$projectname" || true
-        - sudo su $projectuser -c "cd $projectpath; nohup java -jar $projectname-$version.jar 2>&1 &"
-    tags:
-        - devopslab
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - sudo cp target/$projectname-$version.jar $projectpath
+    - sudo chown -R $projectuser: $projectpath
+    - sudo pkill -f "$projectname" || true
+    - sudo su $projectuser -c "cd $projectpath && nohup java -jar $projectname-$version.jar > app.log 2>&1 &"
+  tags:
+    - devopslab
