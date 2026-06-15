@@ -5,6 +5,6 @@ stages:
 build:
     stage: build
     script:
-        - nvm install -DskipTest=true
+        - mvn install -DskipTest=true
     tags:
         - devopslab
