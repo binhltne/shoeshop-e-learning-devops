@@ -14,7 +14,7 @@ build:
     variables:
         GIT_STRATEGY: clone
     script:
-        - mvn install -DskipTest=true
+        - mvn install -DskipTests=true
     tags:
         - devopslab
 
