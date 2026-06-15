@@ -8,3 +8,5 @@ build:
         - whoami
         - pwd
         - ls
+    tags:
+        - devopslab
