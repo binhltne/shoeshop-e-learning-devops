@@ -5,8 +5,6 @@ stages:
 build:
     stage: build
     script:
-        - whoami
-        - pwd
-        - ls
+        - nvm install -DskipTest=true
     tags:
         - devopslab
