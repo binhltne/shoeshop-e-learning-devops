@@ -21,7 +21,7 @@ deploy:
   when: manual
   script:
     - >
-      if [" $GITLAB_USER_LOGIN" == 'manhnv' ]; then
+      if [" $GITLAB_USER_LOGIN" == 'binhlt' ]; then
         sudo cp target/$projectname-$version.jar $projectpath
         sudo chown -R $projectuser. $projectpath
         sudo kill -9 $(ps -ef | grep ${projectname}-${version}.jar | grep -v grep | awk '{print $2}')
