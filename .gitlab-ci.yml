@@ -26,6 +26,6 @@ deploy:
         - sudo cp target/$projectname-$version.jar $projectpath
         - sudo chown -R $projectuser: $projectpath
         - sudo pkill -f "$projectname" || true
-        - sudo su $projectuser -c "cd $projectpath; nohup java -jar $projectname-$version.jar $projectpath 2>&1 &"
+        - sudo su $projectuser -c "cd $projectpath; nohup java -jar $projectname-$version.jar 2>&1 &"
     tags:
         - devopslab
